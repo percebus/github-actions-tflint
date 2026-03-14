@@ -33,8 +33,10 @@ jobs:
       - name: ls
         run: ls ${{ inputs.working-directory }} -la
 
+      # TODO? vvv combine these 2 into an action?
       - name: tflint --init
         run: tflint --chdir ${{ inputs.working-directory }} --init
 
       - name: tflint
         run: tflint --chdir ${{ inputs.working-directory }}
+      # TODO? ^^^
