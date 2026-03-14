@@ -20,7 +20,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: run
+    name: tflint
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
 

@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   default:
-    name: tflint
+    name: ./terra
     uses: ./.github/workflows/run.yml
 
   working-directory__matrix:
@@ -26,7 +26,7 @@ jobs:
         projects:
           - azurerm/some-rg
 
-    name: tflint @ ${{ matrix.projects }}
+    name: ${{ matrix.projects }}
     uses: ./.github/workflows/run.yml
     with:
       working-directory: assets/terra/${{ matrix.projects }}
