@@ -1,0 +1,49 @@
+{
+  "name": "github-actions-tflint",
+  "version": "0.1.0",
+  "description": "GitHub re-usable actions and workflows for tflint",
+  "keywords": [
+    "GitHub",
+    "re-usable",
+    "actions",
+    "workflows",
+    "tflint",
+    "terraform"
+  ],
+  "homepage": "https://github.com/percebus/github-actions-tflint#readme",
+  "bugs": {
+    "url": "https://github.com/percebus/github-actions-tflint/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/percebus/github-actions-tflint.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "JCystems",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "brew:install": "brew install tflint",
+    "choco:install": "choco install tflint",
+    "setup:macos": "npm run brew:install",
+    "setup:windows": "npm run choco:install",
+    "_prettier": "prettier .",
+    "prettier:check": "npm run _prettier -- --check",
+    "prettier:write": "npm run _prettier -- --write",
+    "_terraform": "terraform -chdir=./terra",
+    "terraform:init": "npm run _terraform -- init -upgrade",
+    "terraform:fmt": "npm run _terraform -- fmt -recursive -diff -list=true",
+    "terraform:fmt-check": "npm run terraform:fmt -- -check",
+    "terraform:validate": "npm run _terraform -- validate",
+    "lint": "npm run prettier:check",
+    "lint_all": "npm run prettier:check && npm run terraform:fmt-check",
+    "format": "npm run prettier:write",
+    "postformat": "npm run lint",
+    "format_all": "npm run prettier:write && npm run terraform:fmt",
+    "postformat_all": "npm run lint_all",
+    "test": "exit 0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}

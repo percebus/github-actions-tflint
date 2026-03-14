@@ -1,0 +1,13 @@
+name: setup-tflint
+description: Install tflint
+
+runs:
+  using: composite
+  steps:
+    - uses: terraform-linters/setup-tflint@v6
+      with:
+        tflint_version: latest
+
+    - name: tflint --version
+      shell: bash
+      run: tflint --version

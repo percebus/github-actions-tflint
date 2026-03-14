@@ -1,0 +1,39 @@
+name: tflint
+
+on:
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      working-directory:
+        description: working-directory
+        type: string
+        required: false
+        default: "./terra"
+
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      working-directory:
+        description: working-directory
+        type: string
+        required: false
+        default: "./terra"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: run
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+
+      # - uses: percebus/github-actions-tflint/.github/actions/setup@main  # TODO
+      # XXX
+      - uses: terraform-linters/setup-tflint@v6
+        with:
+          tflint_version: latest
+
+      - name: tflint --init
+        working-directory: ${{ inputs.working-directory }}
+        run: tflint --init
+
+      - name: tflint
+        working-directory: ${{ inputs.working-directory }}
+        run: tflint
