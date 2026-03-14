@@ -1,0 +1,40 @@
+name: "Test workflows/run"
+
+on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  default:
+    name: tflint -chdir=./terra --init & run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/init_and_run
+
+  working-directory__matrix:
+    needs: default
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        projects:
+          - azurerm/some-rg
+
+    name: tflint -chdir=${{ matrix.projects }} --init & run
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/init_and_run
+        with:
+          working-directory: assets/terra/${{ matrix.projects }}
