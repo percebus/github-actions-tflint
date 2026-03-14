@@ -24,11 +24,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
 
-      # - uses: percebus/github-actions-tflint/.github/actions/setup@main  # TODO
-      # XXX
-      - uses: terraform-linters/setup-tflint@v6
-        with:
-          tflint_version: latest
+      - uses: percebus/github-actions-tflint/.github/actions/setup@main
 
       - name: ls
         run: ls ${{ inputs.working-directory }} -la
