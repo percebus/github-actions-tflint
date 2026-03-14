@@ -1,4 +1,4 @@
-name: "Test actions/run"
+name: "Test actions/init_and_run"
 
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
