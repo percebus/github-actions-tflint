@@ -4,7 +4,7 @@ on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       working-directory:
-        description: working-directory
+        description: chdir
         type: string
         required: false
         default: "./terra"
@@ -23,23 +23,7 @@ jobs:
     name: tflint
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
-
       - uses: percebus/github-actions-tflint/.github/actions/setup@main
-
-      # TODO
-      # - uses: percebus/github-actions-tflint/.github/actions/init_and_run@main
-      #   with:
-      #     working-directory: ${{ inputs.working-directory }}
-
-      # XXX vvv DELETE ME
-
-      - name: ls
-        run: ls ${{ inputs.working-directory }} -la
-
-      - name: tflint --init
-        run: tflint --chdir ${{ inputs.working-directory }} --init
-
-      - name: tflint
-        run: tflint --chdir ${{ inputs.working-directory }}
-
-      # XXX ^^^ DELETE ME
+      - uses: percebus/github-actions-tflint/.github/actions/init_and_run@main
+        with:
+          working-directory: ${{ inputs.working-directory }}
