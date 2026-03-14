@@ -6,12 +6,12 @@ tflint for terraform (like) projects
 
 ### Actions
 
-| action | test |
-| --- | --- |
+| action                           | test                                 |
+| -------------------------------- | ------------------------------------ |
 | [setup](./.github/actions/setup) | [test](./.github/workflows/test.yml) |
 
 ### Workflows
 
-| workflow | test |
-| --- | --- |
+| workflow                           | test                                 |
+| ---------------------------------- | ------------------------------------ |
 | [run](./.github/workflows/run.yml) | [test](./.github/workflows/test.yml) |

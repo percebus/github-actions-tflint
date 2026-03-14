@@ -30,10 +30,11 @@ jobs:
         with:
           tflint_version: latest
 
+      - name: ls
+        run: ls ${{ inputs.working-directory }} -la
+
       - name: tflint --init
-        working-directory: ${{ inputs.working-directory }}
-        run: tflint --init
+        run: tflint --init ${{ inputs.working-directory }}
 
       - name: tflint
-        working-directory: ${{ inputs.working-directory }}
-        run: tflint
+        run: tflint ${{ inputs.working-directory }}
