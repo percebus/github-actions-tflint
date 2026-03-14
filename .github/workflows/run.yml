@@ -34,7 +34,7 @@ jobs:
         run: ls ${{ inputs.working-directory }} -la
 
       - name: tflint --init
-        run: tflint --init ${{ inputs.working-directory }}
+        run: tflint --chdir ${{ inputs.working-directory }} --init
 
       - name: tflint
-        run: tflint ${{ inputs.working-directory }}
+        run: tflint --chdir ${{ inputs.working-directory }}
