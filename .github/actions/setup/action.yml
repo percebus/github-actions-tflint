@@ -12,7 +12,7 @@ runs:
   steps:
     - uses: terraform-linters/setup-tflint@v6
       with:
-        tflint-version: ${{ inputs.tflint-version }}
+        tflint_version: ${{ inputs.tflint-version }}
 
     - name: tflint --version
       shell: bash

@@ -21,3 +21,20 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: ./.github/actions/setup
+
+  tflint-version__matrix:
+    needs: default
+    name: tflint @ ${{ matrix.tflint-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tflint-version:
+          - v0.61.0
+          - latest
+
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: ./.github/actions/setup
+        with:
+          tflint-version: ${{ matrix.tflint-version }}
