@@ -1,0 +1,32 @@
+name: "Test workflows/run"
+
+on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  default:
+    name: ./terra
+    uses: ./.github/workflows/run.yml
+
+  working-directory__matrix:
+    needs: default
+    strategy:
+      matrix:
+        projects:
+          - azurerm/some-rg
+
+    name: ${{ matrix.projects }}
+    uses: ./.github/workflows/run.yml
+    with:
+      working-directory: assets/terra/${{ matrix.projects }}
