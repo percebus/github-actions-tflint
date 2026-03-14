@@ -27,6 +27,7 @@
     "choco:install": "choco install tflint",
     "setup:macos": "npm run brew:install",
     "setup:windows": "npm run choco:install",
+    "setup:linux": "bash scripts/tflint/install_linux.ba.sh",
     "_prettier": "prettier .",
     "prettier:check": "npm run _prettier -- --check",
     "prettier:write": "npm run _prettier -- --write",
