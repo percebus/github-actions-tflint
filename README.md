@@ -9,9 +9,10 @@ tflint for terraform (like) projects
 
 ### Actions
 
-| action                           | test                                                                                                                                                                                                                        |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [setup](./.github/actions/setup) | [![Test actions/setup](https://github.com/percebus/github-actions-tflint/actions/workflows/test_actions__setup.yml/badge.svg)](https://github.com/percebus/github-actions-tflint/actions/workflows/test_actions__setup.yml) |
+| action                                         | test                                                                                                                                                                                                                                             |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [setup](./.github/actions/setup)               | [![Test actions/setup](https://github.com/percebus/github-actions-tflint/actions/workflows/test_actions__setup.yml/badge.svg)](https://github.com/percebus/github-actions-tflint/actions/workflows/test_actions__setup.yml)                      |
+| [init_and_run](./.github/actions/init_and_run) | [![Test actions/init_and_run](https://github.com/percebus/github-actions-tflint/actions/workflows/test_actions__init_and_run.yml/badge.svg)](https://github.com/percebus/github-actions-tflint/actions/workflows/test_actions__init_and_run.yml) |
 
 ### Workflows
 

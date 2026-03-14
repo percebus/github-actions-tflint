@@ -1,12 +1,18 @@
 name: setup-tflint
 description: Install tflint
 
+inputs:
+  tflint-version:
+    description: tflint version to install
+    required: false
+    default: latest
+
 runs:
   using: composite
   steps:
     - uses: terraform-linters/setup-tflint@v6
       with:
-        tflint_version: latest
+        tflint-version: ${{ inputs.tflint-version }}
 
     - name: tflint --version
       shell: bash
